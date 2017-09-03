@@ -13,7 +13,10 @@ setup(
     author="Abhinav Tushar",
     author_email="abhinav.tushar.vs@gmail.com",
     url=project_url,
-    install_requires=["hy==0.13.0"],
+    install_requires=[
+        "colorama",
+        "hy==0.13.0"
+    ],
     keywords="",
     packages=find_packages(),
     classifiers=(
