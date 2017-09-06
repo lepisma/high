@@ -2,6 +2,7 @@
 
 (import [colorama [Fore Style]])
 (import colorama)
+(import [high.utils [*]])
 
 (colorama.init :autoreset True)
 
@@ -70,3 +71,8 @@ First list is of True items, second is of False."
                     (.append false-items x))) ~source-list))
     [true-items false-items]))
 
+(defmacro ++ [expr]
+  `(+= ~expr 1))
+
+(defmacro -- [expr]
+  `(-= ~expr 1))
