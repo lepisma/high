@@ -2,14 +2,9 @@
 
 (import [colorama [Fore Style]])
 (import colorama)
-(import [high.utils [*]])
+(import [eep [Searcher]])
 
 (colorama.init :autoreset True)
-
-(defsharp p [partial-path]
-  `(do
-    (import [os.path :as path])
-    (path.abspath (path.expanduser ~partial-path))))
 
 (defmacro let [definitions &rest body]
   (setv n (len definitions)
@@ -21,6 +16,31 @@
     (setv i (+ i 2)))
   (.append out-exp `(do ~@body))
   `(do ~@out-exp))
+
+(defn separate-fsubs (txt)
+  "Separate fstring substitutions and cleared string"
+  (let [es (Searcher txt)
+        fsubs []
+        opening-enc "{"
+        closing-enc "}"]
+    (while (es.search-forward opening-enc)
+      (setv begin es.point)
+      (es.search-forward closing-enc)
+      (es.swap-markers)
+      (setv es.mark begin)
+      (fsubs.append (es.get-sub))
+      (es.erase))
+    [fsubs (str es)]))
+
+(defsharp f [f-string]
+  (let [[fsubs txt] (separate-fsubs f-string)
+        fvals (list (map (fn [x] (eval (read-str x))) fsubs))]
+    `(.format ~txt ~@fvals)))
+
+(defsharp p [partial-path]
+  `(do
+    (import [os.path :as path])
+    (path.abspath (path.expanduser ~partial-path))))
 
 (defmacro! this-or-that [o!x y]
   `(lif ~g!x ~g!x ~y))
