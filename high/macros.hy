@@ -101,5 +101,5 @@ First list is of True items, second is of False."
   "Start the expression in a new thread"
   `(do
     (import [threading [Thread]])
-    (.start (Thread :target ~expr))))
+    (.start (Thread :target (fn [] ~expr)))))
 
