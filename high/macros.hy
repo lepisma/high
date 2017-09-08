@@ -3,6 +3,7 @@
 (import [colorama [Fore Style]])
 (import colorama)
 (import [eep [Searcher]])
+(import [threading [Thread]])
 
 (colorama.init :autoreset True)
 
@@ -96,3 +97,8 @@ First list is of True items, second is of False."
 
 (defmacro -- [expr]
   `(-= ~expr 1))
+
+(defmacro thread-run [expr]
+  "Start the expression in a new thread"
+  `(.start (Thread :target ~expr)))
+
