@@ -15,7 +15,9 @@ setup(
     url=project_url,
     install_requires=[
         "colorama",
-        "hy==0.13.0"
+        "hy==0.13.0",
+        "matplotlib",
+        "numpy"
     ],
     keywords="",
     packages=find_packages(),
