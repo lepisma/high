@@ -7,6 +7,7 @@
 (colorama.init :autoreset True)
 
 (defmacro let [definitions &rest body]
+  "Dummy let. Just for asthetics."
   (setv n (len definitions)
         i 0)
   (setv out-exp '())
