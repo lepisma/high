@@ -1,6 +1,6 @@
 ;; General utilities
 
-(require [high.macros [*]])
+(require [hilt.macros [*]])
 (import [matplotlib.pyplot :as plt])
 (import [numpy :as np])
 
