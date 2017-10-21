@@ -3,10 +3,10 @@ from setuptools import find_packages, setup
 with open("README.org") as readme_file:
     readme = readme_file.read()
 
-project_url = "https://github.com/lepisma/hilt"
+project_url = "https://github.com/lepisma/high"
 
 setup(
-    name="hilt",
+    name="high",
     version="0.1.0",
     description="Hy utility belt",
     long_description=readme,
