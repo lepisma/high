@@ -6,6 +6,15 @@
 
 (colorama.init :autoreset True)
 
+(defmacro async-defn [name args &rest body]
+  `(do
+     (import asyncio)
+     (with-decorator asyncio.coroutine
+       (def ~name (fn [~@args] (do ~@body))))))
+
+(defmacro await [stuff]
+  `(yield-from ~stuff))
+
 (defmacro let [definitions &rest body]
   "Dummy let. Just for asthetics."
   (setv n (len definitions)
