@@ -12,6 +12,10 @@
      (with-decorator asyncio.coroutine
        (def ~name (fn [~@args] (do ~@body))))))
 
+(defmacro with-fp [file-name &rest body]
+  `(with [fp (open ~file-name)]
+     ~@body))
+
 (defmacro await [stuff]
   `(yield-from ~stuff))
 
