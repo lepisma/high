@@ -4,6 +4,7 @@
 (import [matplotlib.pyplot :as plt])
 (import [numpy :as np])
 (import [os [path]])
+(import os)
 
 (def t True)
 (def f False)
