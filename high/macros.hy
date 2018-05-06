@@ -46,11 +46,9 @@
       (es.erase))
     [fsubs (str es)]))
 
-;; Doesn't work, needs environment too
 (defsharp f [f-string]
-  (let [[fsubs txt] (separate-fsubs f-string)
-        fvals (list (map (fn [x] (eval (read-str x))) fsubs))]
-    `(.format ~txt ~@fvals)))
+  (let [[fsubs txt] (separate-fsubs f-string)]
+    `(.format ~txt ~@(map read-str fsubs))))
 
 (defsharp p [partial-path]
   `(do
