@@ -57,9 +57,6 @@
     (import [os.path :as path])
     (path.abspath (path.expanduser ~partial-path))))
 
-(defmacro! this-or-that [o!x y]
-  `(lif ~g!x ~g!x ~y))
-
 (defmacro color-print [&rest args]
   (setv color-map {:warn (+ Fore.YELLOW Style.BRIGHT)
                    :info Fore.CYAN
