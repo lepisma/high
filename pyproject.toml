@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "high"
-version = "0.1.0"
+version = "0.1.1"
 description = "Hy utility belt"
 authors = ["Abhinav Tushar <lepisma@fastmail.com>"]
 license = "GPL-3.0"
